@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% block body %}
+  
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>Product List</h2>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Created_at</th>
+    <th>Mark</th>
+    <th>
+      Action
+    </th>
+  </tr>
+  
+  {% for p in student %}
+  <tr>
+    <td>{{p.name}}</td>
+    <td>{{p.description}}</td>
+    <td>{{p.price}}</td>
+    <td>{{p.created_at}}</td>
+    <td>{{p.grade}}</td>
+    <td>
+      <a href="{% url 'productDelete' p.id %}">Delete</a>
+      <a href="{% url 'editproduct' p.id %} ">edit</a>
+    </td>
+  </tr>
+  {% endfor %}
+</table>
+
+</body>
+</html>
+{% endblock body %}
