@@ -29,6 +29,7 @@ def productADD(r):
         p_price=r.POST.get('Price') 
         p_created_at=r.POST.get('created_at') 
         p_mark=int(r.POST.get('mark'))
+        P_pic=r.FILES.get('pic')
 
         grade=calculate_grade(p_mark)
 
@@ -38,6 +39,7 @@ def productADD(r):
             price=p_price,
             created_at=p_created_at,
             grade=grade,
+            picture=P_pic,
         )
         return redirect('productlist')
     return render(r,'productADD.html')
@@ -57,6 +59,7 @@ def editproduct(r,id):
         p_created_at=r.POST.get('created_at') 
         p_mark=int(r.POST.get('mark'))
 
+
         grade=calculate_grade(p_mark)
 
         productModel(
@@ -72,6 +75,7 @@ def editproduct(r,id):
         'student':stude_id
     }
     return render(r,'edit.html',context)
+
 
 # salary page 
 def HAR (hra_percent,basic_salary):

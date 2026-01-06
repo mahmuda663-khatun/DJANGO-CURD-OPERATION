@@ -34,6 +34,7 @@ tr:nth-child(even) {
     <th>Price</th>
     <th>Created_at</th>
     <th>Mark</th>
+    <th>Picture</th>
     <th>
       Action
     </th>
@@ -46,6 +47,13 @@ tr:nth-child(even) {
     <td>{{p.price}}</td>
     <td>{{p.created_at}}</td>
     <td>{{p.grade}}</td>
+    
+    {% if p.picture %}
+      <td>
+        <img src="{{p.picture.url}}" width="50px" height="50px" alt="">
+      </td>
+    {% endif %}
+      
     <td>
       <a href="{% url 'productDelete' p.id %}">Delete</a>
       <a href="{% url 'editproduct' p.id %} ">edit</a>

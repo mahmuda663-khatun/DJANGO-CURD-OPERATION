@@ -8,7 +8,7 @@ class productModel(models.Model):
     created_at=models.DateField(auto_now_add=True)
     mark=models.PositiveIntegerField(null=True)
     grade=models.CharField(null=True)
-
+    picture=models.ImageField(upload_to='img/',null=True)
 # salary model 
 class slaryModel(models.Model):
     hra=models.CharField(max_length=200)
