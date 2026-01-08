@@ -1,0 +1,74 @@
+{% extends 'home.html' %}
+
+{% block body %}
+<!DOCTYPE html>
+<html>
+<style>
+form {
+  border-radius: 5px;
+  background-color: #f2f2f2;
+  padding: 20px;
+}
+
+label {display: block;}
+
+input[type=text], select {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
+  width: 100%;
+  background-color: #4CAF50;
+  color: white;
+  padding: 14px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+input[type=submit]:hover {
+  background-color: #45a049;
+}
+</style>
+<body>
+
+<h2>Add Salary</h2>
+
+<form action="" method="POST">
+    {% csrf_token %}
+  <label for="fname">Bouns</label>
+  <input type="number" id="fname" name="Bouns"  placeholder="Your name..">
+
+  <label for="lname">Basic_salary</label>
+  <input type="numder" id="lname" name="Basic_salary" placeholder="Your last name..">
+
+  <label for="lname">overtime_hours</label>
+  <input type="number" id="lname" name="overtime_hours" placeholder="Your last name..">
+
+  <label for="lname">ta_percent</label>
+  <input type="number" id="lname" name="ta_percent" placeholder="Your last name..">
+
+  <label for="lname">da_percent</label>
+  <input type="number" id="lname" name="da_percent" placeholder="Your last name..">
+  
+  <label for="lname">her_percent</label>
+  <input type="number" id="lname" name="her_percent" placeholder="Your last name..">
+
+  <label for="lname">Picture</label>
+  <input type="file" id="lname" name="Picture" placeholder="Your last name..">
+  
+  <input type="submit" value="Submit">
+</form>
+
+</body>
+</html>
+{% endblock body %}
+
+

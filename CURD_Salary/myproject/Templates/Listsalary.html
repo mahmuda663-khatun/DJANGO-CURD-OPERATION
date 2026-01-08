@@ -1,0 +1,79 @@
+{% extends 'home.html' %}
+{% block body %}
+    
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2;}
+
+tr:hover {background-color: #ddd;}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #04AA6D;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<h1>Salary List</h1>
+
+<table>
+  <tr>
+    <th>Bouns</th>
+    <th>Basic_salary</th>
+    <th>overtime_hours</th>
+    <th>ta_percent</th>
+    <th>da_percent</th>
+    <th>her_percent</th>
+    <th>Picture</th>
+    <th>Gross_salary</th>
+    <th>Action</th>
+  </tr>
+
+{% for s in salary %}  
+  <tr>
+    <td>{{s.Bouns}}</td>
+    <td>{{s.Basic_salary}}</td>
+    <td>{{s.overtime_hours}}</td>
+    <td>{{s.ta_percent}}</td>
+    <td>{{s.da_percent}}</td>
+    <td>{{s.her_percent}}</td>
+    <td>
+      
+      {% if s.Picture %}
+        <img src="{{s.Picture.url}}" width="50px" height="50px" alt="">
+      {% else %}
+        <img src="../myproject/defolt_img/user.jpg" width="50px" height="50px" alt="">
+      {% endif %}
+        
+    </td>
+    <td>{{s.Gross_salary}}</td>
+    <td>
+      <a href="{% url 'salaryDelete' s.id %}">Delete</a>
+      <a href="{% url 'salaryUpdate' s.id %}">Edit</a>
+    </td>
+  </tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>
+{% endblock body %}
+
