@@ -1,0 +1,70 @@
+{% extends 'home.html' %}
+
+{% block body %}
+    
+
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>Teacher List</h2>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Departmentme</th>
+    <th>Email</th>
+    <th>Joininjdate</th>
+    <th>Salay</th>
+    <th>images</th>
+    <th>Actions</th>
+  </tr>
+  
+  {% for t in teacher %}
+    
+  <tr>
+    <td>{{t.name}}</td>
+    <td>{{t.department}}</td>
+    <td>{{t.email}}</td>
+    <td>{{t.joininjdate}}</td>
+    <td>{{t.salay}}</td>
+    
+    {% if t.picture %}
+    <td>
+        <img src="{{ t.picture.url }}" width="50px" height="50px"  alt="">
+    </td>
+    
+    {% endif %}
+        
+
+    <td>
+       <a href="{% url 'teacherDelete' t.id %}">Delete</a> 
+       <a href="{% url 'teacherUpdate' t.id %}">Update</a> 
+    </td>
+    
+  </tr>
+   {% endfor %}
+</table>
+
+</body>
+</html>
+{% endblock body %}
