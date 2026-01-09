@@ -44,25 +44,25 @@ input[type=submit]:hover {
 <form action="" method="POST" enctype="multipart/form-data">
     {% csrf_token %}
   <label for="fname">Bouns</label>
-  <input type="number" id="fname" name="Bouns"  placeholder="Your name..">
+  <input type="number" id="fname" name="Bouns" value={{S_salary.Bouns}} placeholder="Your name..">
 
   <label for="lname">Basic_salary</label>
-  <input type="numder" id="lname" name="Basic_salary" placeholder="Your last name..">
+  <input type="numder" id="lname" name="Basic_salary" value={{S_salary.Basic_salary}} placeholder="Your last name..">
 
   <label for="lname">overtime_hours</label>
-  <input type="number" id="lname" name="overtime_hours" placeholder="Your last name..">
+  <input type="number" id="lname" name="overtime_hours" value={{S_salary.overtime_hours}} placeholder="Your last name..">
 
   <label for="lname">ta_percent</label>
-  <input type="number" id="lname" name="ta_percent" placeholder="Your last name..">
+  <input type="number" id="lname" name="ta_percent" value={{S_salary.ta_percent}} placeholder="Your last name..">
 
   <label for="lname">da_percent</label>
-  <input type="number" id="lname" name="da_percent" placeholder="Your last name..">
+  <input type="number" id="lname" name="da_percent" value={{S_salary.da_percent}} placeholder="Your last name..">
   
   <label for="lname">her_percent</label>
-  <input type="number" id="lname" name="her_percent" placeholder="Your last name..">
+  <input type="number" id="lname" name="her_percent" value={{S_salary.her_percent}} placeholder="Your last name..">
 
   <label for="lname">Picture</label>
-  <input type="file" id="lname" name="Picture" placeholder="Your last name..">
+  <input type="file" id="lname" name="Picture" value={{S_salary.Picture}} placeholder="Your last name..">
   
   <input type="submit" value="Submit">
 </form>
