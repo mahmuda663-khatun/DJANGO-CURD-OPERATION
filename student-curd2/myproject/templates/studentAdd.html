@@ -1,0 +1,26 @@
+{% extends 'home.html' %}
+{% block body %}
+   
+<h2>Style an HTML Form with CSS</h2>
+
+<form action="" method="POST" enctype="multipart/form-data">
+  <label for="fname">Name</label>
+  <input type="text" id="fname" name="Name" placeholder="Your name..">
+
+  <label for="lname">Roll</label>
+  <input type="number" id="lname" name="Roll" placeholder="Your last name..">
+
+  <label for="lname">Address</label>
+  <input type="text" id="lname" name="Address" placeholder="Your last name..">
+
+  <label for="lname">Date</label>
+  <input type="date" id="lname" name="Date" placeholder="Your last name..">
+
+  <label for="lname">Image</label>
+  <input type="file" id="lname" name="Image" placeholder="Your last name..">
+  
+  <input type="submit" value="Submit">
+</form>
+
+
+{% endblock body %}

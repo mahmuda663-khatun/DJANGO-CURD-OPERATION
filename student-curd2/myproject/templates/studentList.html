@@ -1,0 +1,46 @@
+{% extends 'home.html' %}
+
+{% block body %}
+    
+
+<h1>A Fancy Table</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Roll</th>
+    <th>Address</th>
+    <th>Date</th>
+    <th>Image</th>
+    <th>Action</th>
+  </tr>
+  <tr>
+    
+    {% for s in student %}
+    <td>{{s.Name}}</td>
+    <td>{{s.Roll}}</td>
+    <td>{{s.Address}}</td>
+    <td>{{s.Date}}</td>
+    <td>{{s.Image}}</td>
+
+    <td>
+    {% if s.Image %}
+        <img src="{{s.Image.url}}" height="50px" width="50px" alt="">
+         
+    {% else %}
+        <img src="../myapp/defoltpic/user.jpg" height="50px" width="50px" alt="">
+    {% endif %}
+    </td> 
+    <td>
+        <a href="{% url 'student_update' s.id %}"></a>
+        <a href="{% url 'student_delete' s.id %}"></a>
+    </td>
+    
+    {% endfor %}
+  </tr>
+  
+</table>
+
+{% endblock body %}
+
+
