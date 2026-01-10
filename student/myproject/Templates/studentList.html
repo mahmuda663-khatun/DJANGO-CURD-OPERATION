@@ -1,50 +1,41 @@
-<!DOCTYPE html>
-<html>
-<head>
-<style>
-table {
-  font-family: Arial, Helvetica, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+{% extends 'home.html' %}
+{% block body %}
 
-td, th {
-  border: 1px solid #ddd;
-  padding: 8px;
-}
-
-tr:nth-child(even){background-color: #f2f2f2;}
-
-tr:hover {background-color: #ddd;}
-
-th {
-  padding-top: 12px;
-  padding-bottom: 12px;
-  text-align: left;
-  background-color: #04AA6D;
-  color: white;
-}
-</style>
-</head>
-<body>
-
-<h1>A Fancy Table</h1>
+<h1>A student list Table</h1>
 
 <table>
   <tr>
-    <th>Company</th>
-    <th>Contact</th>
-    <th>Country</th>
+    <th>Name</th>
+    <th>Course</th>
+    <th>Total_Marks</th>
+    <th>image</th>
+    <th>Actions</th>
   </tr>
+  
+  {% for s in student %}
   <tr>
-    <td>Alfreds Futterkiste</td>
-    <td>Maria Anders</td>
-    <td>Germany</td>
+    <td>{{s.Name}}</td>
+    <td>{{s.Course}}</td>
+    <td>{{s.Total_Marks}}</td>
+    <td>
+      
+      {% if s.image %}
+        <img src="{{s.image.url}}" width="50px" height="50px" alt="">
+
+        {% else %}
+        <img src="../myapp/defolt-img/user.jpg" width="50px" height="50px" alt="">
+      {% endif %}
+        
+    </td>
+    <td>
+      <a href="{% url 'studentUpdate' s.id %}">edit</a>
+      <a href="{% url 'studentDelete' s.id %}">delete</a>
+    </td>
+    
   </tr>
 
+ {% endfor %}
 </table>
 
-</body>
-</html>
 
-
+{% endblock body %}

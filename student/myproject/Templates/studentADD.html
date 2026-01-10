@@ -1,0 +1,26 @@
+{% extends 'home.html' %}
+
+{% block body %}
+
+<h2>Student Add Page</h2>
+
+<form action="" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+  <label for="fname">Name</label>
+  <input type="text" id="fname" name="Name" placeholder="Your name..">
+
+  <label for="lname">Course</label>
+  <input type="text" id="lname" name="Course" placeholder="Your last name..">
+
+  <label for="lname">Total_Marks</label>
+  <input type="number" id="lname" name="Total_Marks" placeholder="Your last name..">
+
+  <label for="lname">image</label>
+  <input type="file" id="lname" name="image" placeholder="Your last name..">
+  
+  <input type="submit" value="Submit">
+</form>
+
+{% endblock body %}
+
+
