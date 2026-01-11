@@ -1,0 +1,41 @@
+{% extends 'home.html' %}
+{% block body %}
+
+<h1>Product list Table</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Price</th>
+    <th>Product date</th>
+    <th>Created_at</th>
+    <th>Product Image</th>
+    <th>Action</th>
+  </tr>
+
+    
+    {% for p in product %}    
+    <tr>
+        <td>{{p.name}}</td>
+    <td>{{p.price}}</td>
+    <td>{{p.date}}</td>
+    <td>{{p.created_at}}</td>
+
+    <td>
+        {% if p.image %}
+           <img src="{{p.image.url}}" width="50px" height="50px" alt=""> 
+        {% endif %}     
+    </td>
+
+    <td>
+        <a href="{% url 'productUpdate' p.id %}">edit</a>
+        <a href="{% url 'productDelete' p.id %}">delete</a> 
+    </td>
+    </tr>
+
+    {% endfor %}
+
+
+{% endblock body %}
+
+

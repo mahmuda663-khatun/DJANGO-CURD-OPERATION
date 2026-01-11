@@ -1,0 +1,29 @@
+{% extends 'home.html' %}
+{% block body %}
+
+<h2>Product add page</h2>
+
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+  <label for="fname">Name</label>
+  <input type="text" id="fname" name="name" value="{{products.name}}" placeholder="Your name..">
+
+  <label for="lname">description</label>
+  <input type="text" id="lname" name="description" value="{{products.description}}" placeholder="Your last name..">
+
+  <label for="lname">price</label>
+  <input type="number" id="lname" name="price" value="{{products.price}}" placeholder="Your last name..">
+
+  <label for="lname">date</label>
+  <input type="date" id="lname" name="date" value="{{products.date|date:'Y-m-d'}}" placeholder="Your last name..">
+
+  <label for="lname">image</label>
+  <input type="file" id="lname" name="image" value="{{products.image}}" placeholder="Your last name..">
+  
+  {% if products.image %}
+           <img src="{{products.image.url}}" width="50px" height="50px" alt=""> 
+        {% endif %}  
+  <input type="submit" value="Submit">
+</form>
+
+{% endblock body %}
