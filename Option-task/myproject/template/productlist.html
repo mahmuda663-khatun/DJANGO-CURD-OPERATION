@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+
+<h2>Pending Table</h2>
+<table>
+  <tr>
+    <th>ProjectName</th>
+    <th>status_type</th>
+    <th>deadline</th>
+  </tr>
+  {% for i in pending %}
+    <tr>
+        <td>{{i.projectName}}</td>
+        <td>{{i.status}}</td>
+        <td>{{i.deadline}}</td>
+    </tr>
+  {% endfor %} 
+</table>
+<h2>Ongoing Table</h2>
+<table>
+  <tr>
+    <th>ProjectName</th>
+    <th>status_type</th>
+    <th>deadline</th>
+  </tr>
+  {% for i in ongoing %}
+    <tr>
+        <td>{{i.projectName}}</td>
+        <td>{{i.status}}</td>
+        <td>{{i.deadline}}</td>
+    </tr>
+  {% endfor %} 
+</table>
+
+<h2>Completed Table</h2>
+<table>
+  <tr>
+    <th>ProjectName</th>
+    <th>status_type</th>
+    <th>deadline</th>
+  </tr>
+  {% for i in completed %}
+    <tr>
+        <td>{{i.projectName}}</td>
+        <td>{{i.status}}</td>
+        <td>{{i.deadline}}</td>
+    </tr>
+  {% endfor %} 
+</table>
+
+<h2>All data Table</h2>
+<form action="" method="GET">
+          <label for="">status type</label>
+          <select name="status">
+    <option value="">--select--</option>
+    <option value="pending" {% if p_data == 'pending' %}selected {% endif %}>Pending</option>
+    <option value="ongoing" {% if p_data == 'ongoing' %}selected{% endif %}>Ongoing</option>
+    <option value="completed" {% if p_data == 'completed' %}selected{% endif %}>Completed</option>
+  </select>
+          <button type="submit">Filter</button>
+          <a href="{% url 'Productlist' %}">clear</a>
+        </form>
+<table>
+  <tr>
+    <th>ProjectName</th>
+    <th>status_type</th>
+    <th>deadline</th>
+  </tr>
+  {% for i in selected_data %}
+    <tr>
+        <td>{{i.projectName}}</td>
+        <td>{{i.status}}</td>
+        <td>{{i.deadline}}</td>
+    </tr>
+  {% endfor %} 
+</table>
+</body>
+</html>
+
