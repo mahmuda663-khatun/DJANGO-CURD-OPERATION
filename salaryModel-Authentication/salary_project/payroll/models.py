@@ -19,3 +19,4 @@ class SalaryModel(models.Model):
 
     def __str__(self):
         return self.empolyee_name
+    

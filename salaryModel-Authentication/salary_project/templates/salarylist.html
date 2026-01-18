@@ -52,8 +52,8 @@ th {
         <td>{{s.net_salary}}</td>
         <td>
             <a href="{% url 'editSalary' s.id %}">edit</a>
-            <a href="{% url 'deleteDalary' s.id %}">delete</a>
-            <a href="{% url 'viewSalary' s.id %}">view</a>
+            <a href="{% url 'deletesalary' s.id %}">delete</a>
+            {% comment %} <a href="{% url 'viewSalary' s.id %}">view</a> {% endcomment %}
         </td>
     {% endfor %}
         

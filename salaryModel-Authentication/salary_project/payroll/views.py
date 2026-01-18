@@ -62,15 +62,16 @@ def salarylist(r):
 
 def addSalary(r):
     if r.method=="POST":
-        empolyee_name=r.POST.get('empolyee_name'),
-        employee_photo=r.FILES.get('employee_photo'),
-        basic_salary=int(r.POST.get('basic_salary')),
-        har=int(r.POST.get('har')),
-        bonus=int(r.POST.get('bonus')),
-        tax_percentage=float(r.POST.get('tax_percentage')),
+        empolyee_name=r.POST.get('empolyee_name')
+        employee_photo=r.FILES.get('employee_photo')
 
-        gross_salary=int(basic_salary+har+bonus)
-        net_salary=int(gross_salary)-(int(gross_salary)*float(tax_percentage)/100)
+        basic_salary= Decimal(r.POST.get('basic_salary'))
+        har=Decimal(r.POST.get('har')),
+        bonus=Decimal(r.POST.get('bonus')),
+        tax_percentage=Decimal(r.POST.get('tax_percentage'))
+
+        gross_salary=basic_salary+har+bonus
+        net_salary=gross_salary-(gross_salary*tax_percentage/100)
 
         SalaryModel(
            empolyee_name=empolyee_name,
@@ -85,3 +86,37 @@ def addSalary(r):
 
         return redirect("salarylist")
     return render(r,'addSalary.html')
+
+def editSalary(r,id):
+    salary_data=SalaryModel.objects.get(id=id)
+    if r.method=="POST":
+        empolyee_name=r.POST.get('empolyee_name')
+        employee_photo=r.FILES.get('employee_photo')
+
+        basic_salary= Decimal(r.POST.get('basic_salary'))
+        har=Decimal(r.POST.get('har')),
+        bonus=Decimal(r.POST.get('bonus')),
+        tax_percentage=Decimal(r.POST.get('tax_percentage'))
+
+        gross_salary=basic_salary+har+bonus
+        net_salary=gross_salary-(gross_salary*tax_percentage/100)
+
+        salary_data.empolyee_name=empolyee_name,
+        if employee_photo:
+            salary_data.employee_photo=employee_photo,
+        salary_data.basic_salary=basic_salary,
+        salary_data.har=har, 
+        salary_data.bonus=bonus,
+        salary_data.tax_percentage=tax_percentage,
+        salary_data.gross_salary=gross_salary,
+        salary_data.net_salary=net_salary,
+        salary_data.save()
+        return redirect('salarylist')
+    context={
+        'salary':salary_data
+    }
+    return render(r,'editSalary.html',context)
+
+def deletesalary(r,id):
+    SalaryModel.objects.get(id=id).delete()
+    return redirect(salarylist)
