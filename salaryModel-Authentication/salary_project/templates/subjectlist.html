@@ -1,0 +1,127 @@
+{% extends 'home.html' %}
+
+{% block body %}
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <style>
+        table {
+          font-family: Arial, Helvetica, sans-serif;
+          border-collapse: collapse;
+          width: 100%;
+        }
+        
+        td,
+        th {
+          border: 1px solid #ddd;
+          padding: 8px;
+        }
+        
+        tr:nth-child(even) {
+          background-color: #f2f2f2;
+        }
+        
+        tr:hover {
+          background-color: #ddd;
+        }
+        
+        th {
+          padding-top: 12px;
+          padding-bottom: 12px;
+          text-align: left;
+          background-color: #04aa6d;
+          color: white;
+        }
+      </style>
+    </head>
+    <body>
+      <table>
+        <h1>CSE</h1>
+        <tr>
+          <th>ID</th>
+          <th>Subject name</th>
+          <th>Department</th>
+          <th>Credit</th>
+        </tr>
+
+        {% for i in cse_data %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.subject_name }}</td>
+            <td>{{ i.dept_type }}</td>
+            <td>{{ i.credit }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+
+      <table>
+        <h1>EEE</h1>
+        <tr>
+          <th>ID</th>
+          <th>Subject name</th>
+          <th>Department</th>
+          <th>Credit</th>
+        </tr>
+
+        {% for i in eee_data %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.subject_name }}</td>
+            <td>{{ i.dept_type }}</td>
+            <td>{{ i.credit }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+
+      <table>
+        <h1>CIVIL</h1>
+        <tr>
+          <th>ID</th>
+          <th>Subject name</th>
+          <th>Department</th>
+          <th>Credit</th>
+        </tr>
+
+        {% for i in civil_date %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.subject_name }}</td>
+            <td>{{ i.dept_type }}</td>
+            <td>{{ i.credit }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+
+      
+        <h1>All department</h1>
+        <form action="" method="GET">
+          <label for="email">Department Type</label>
+          <select id="dept_type" name="dept_type">
+            <option value="">--select--</option>
+            <option value="CSE" {% if selected_type == 'CSE' %} selected{% endif %} >CSE</option>
+            <option value="EEE" {% if selected_type == 'EEE' %}selected{% endif %} >EEE</option>
+            <option value="CIVIL" {% if selected_type == 'CIVIL' %}selected{% endif %} >CIVIL</option>
+          </select>
+          <button type="submit">Filter</button>
+          <a href="{% url 'subjectlist' %}">clear</a>
+        </form>
+        <table>
+        <tr>
+          <th>ID</th>
+          <th>Subject name</th>
+          <th>Department</th>
+          <th>Credit</th>
+        </tr>
+
+        {% for i in dept_data %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{ i.subject_name }}</td>
+            <td>{{ i.dept_type }}</td>
+            <td>{{ i.credit }}</td>
+          </tr>
+        {% endfor %}
+      </table>
+    </body>
+  </html>
+{% endblock %}

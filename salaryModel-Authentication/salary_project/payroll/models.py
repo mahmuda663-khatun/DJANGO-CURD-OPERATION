@@ -20,3 +20,16 @@ class SalaryModel(models.Model):
     def __str__(self):
         return self.empolyee_name
     
+class subjectModel(models.Model):
+        DEPT_TYPES = [
+             ('CSE','CSE'),
+             ('EEE','EEE'),
+             ('CIVIL','CIVIL')
+        ]
+        subject_name = models.CharField(max_length=200, null=True)
+        description = models.TextField(null=True)
+        dept_type = models.CharField(choices=DEPT_TYPES,max_length=10,null=True)
+        credit = models.PositiveIntegerField(null=True)
+
+        def __str__(self):
+            return f'{self.subject_name}' 
