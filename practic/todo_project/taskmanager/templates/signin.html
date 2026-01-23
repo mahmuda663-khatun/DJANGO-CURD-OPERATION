@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign In</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg, #11998e, #38ef7d);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .login-box {
+            background: #fff;
+            padding: 25px;
+            width: 350px;
+            border-radius: 10px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .login-box h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #11998e;
+        }
+
+        .login-btn {
+            width: 100%;
+            padding: 10px;
+            background: #11998e;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background: #0f7f74;
+        }
+
+        .extra {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+
+        .extra a {
+            text-decoration: none;
+            color: #11998e;
+        }
+
+        .signup-text {
+            text-align: center;
+            margin-top: 15px;
+            font-size: 14px;
+        }
+
+        .signup-text a {
+            color: #11998e;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+
+<div class="login-box">
+    <h2>Sign In</h2>
+    
+    {% if messages %}
+    
+    {% for messages in messages %}
+        <p>{{messages}}</p>
+    {% endfor %}
+         
+    {% endif %}
+        
+
+    <form action=""  method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+            <label>Userame</label>
+            <input type="text" name="Username" placeholder="Enter your email">
+        </div>
+
+        <div class="form-group">
+            <label>Password</label>
+            <input type="password" name="Password" placeholder="Enter your password">
+        </div>
+
+        <button class="login-btn">Login</button>
+    </form>
+
+    <div class="extra">
+        <a href="#">Forgot Password?</a>
+    </div>
+
+    <div class="signup-text">
+        Don’t have an account?
+        <a href="{% url 'signup' %}">Signup</a>
+    </div>
+</div>
+
+</body>
+</html>

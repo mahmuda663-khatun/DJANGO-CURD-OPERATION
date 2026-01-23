@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Navbar Design</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f4f6f8;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: #1e3c72;
+            padding: 12px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            color: white;
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links li a {
+            text-decoration: none;
+            color: white;
+            font-size: 16px;
+            transition: 0.3s;
+        }
+
+        .nav-links li a:hover {
+            color: #ffdd57;
+        }
+
+        .nav-btn a {
+            background: #ffdd57;
+            padding: 8px 15px;
+            border-radius: 5px;
+            color: #333;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-btn a:hover {
+            background: #ffd633;
+        }
+
+        /* Page content */
+        .content {
+            padding: 50px;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    {% include 'nav.html' %}
+
+    
+    {% block body %}
+    {% if messages %}
+    
+       {% for messages in messages %}
+           <p>{{messages}}</p>
+       {% endfor %}
+         
+    {% endif %}
+
+       <div class="content">
+        <h1>Welcome to My Website</h1>
+        <p>{{user.username}}</p>
+    </div> 
+    {% endblock body %}
+        
+
+</body>
+</html>
