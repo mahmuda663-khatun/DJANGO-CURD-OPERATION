@@ -31,13 +31,14 @@ def signup(request):
 
 def signin(request):
     if request.method=="POST":
-        Username=request.POST.get("Username")
-        Password=request.POST.get("Password")
+        Username=request.POST.get("username")
+        Password=request.POST.get("password")
         print(Username)
 
         user=authenticate(request,username=Username,password=Password)
         if user:
             login(request,user)
+            messages.success(request,'successfuly login')
             return redirect('home')
     return render(request,'signin.html')
    
@@ -52,7 +53,7 @@ def dep_list(r):
     context={
         'data':d_data
     }
-    return render (r,'deplist.html')
+    return render (r,'deplist.html',context)
 
 def dep_Add(r):
     if r.method=="POST":

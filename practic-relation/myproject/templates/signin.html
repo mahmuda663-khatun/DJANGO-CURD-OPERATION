@@ -85,13 +85,23 @@
         }
     </style>
 </head>
+    
 
 <body>
 
     <div class="register-container">
         <h2>Create Account</h2>
 
-        <form action="#" method="POST">
+        {% if messages %}
+
+{% for i in messages %}
+   <p>{{i}}</p> 
+{% endfor %}
+    
+    
+{% endif %}
+
+        <form action="" method="POST">
             {% csrf_token %}
             <div class="input-group">
                 <label for="username">Username</label>
