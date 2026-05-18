@@ -21,7 +21,7 @@
     <td>{{s.Roll}}</td>
     <td>{{s.Address}}</td>
     <td>{{s.Date}}</td>
-    <td>{{s.Image}}</td>
+    
 
     <td>
     {% if s.Image %}
@@ -32,8 +32,8 @@
     {% endif %}
     </td> 
     <td>
-        <a href="{% url 'student_update' s.id %}"></a>
-        <a href="{% url 'student_delete' s.id %}"></a>
+        <a href="{% url 'student_update' s.id %}">edit</a>
+        <a href="{% url 'student_delete' s.id %}">delete</a>
     </td>
     
     {% endfor %}

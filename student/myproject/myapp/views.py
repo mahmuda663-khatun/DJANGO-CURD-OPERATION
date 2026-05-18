@@ -50,7 +50,7 @@ def studentUpdate(r,id):
     #        Course=s_Course,
     #        Total_Marks=s_Total_Marks,
     #        image=s_image,
-    #    ).save()
+    #    ).save()              //comment kora ei onsho tuku dilew hobe
        return redirect('studentList')
     context={
         'student':student
